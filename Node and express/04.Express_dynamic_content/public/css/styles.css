@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+*{
+    margin: 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    background-color: rgb(12, 151, 28);
+    margin-bottom: 12vh;
+}
+
+header nav {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+nav li {
+    list-style: none;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 150px;
+    margin-right: 20px;
+}
+
+header nav li a{
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: 500;
+}
+
+main {
+    /* border: 2px solid black; */
+    margin-left: 50vw;
+    transform: translateX(-25vw);
+    text-align: center;
+}
+
+input {
+    margin-right: 2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    box-shadow: 2px 2px 10px black;
+    border-style: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    background-color: rgb(174, 53, 53);
+    border-style: none;
+    padding: 0.4rem;
+    cursor: pointer;
+    /* box-shadow: 2px 2px 6px rgb(151, 86, 86); */
+    color: aliceblue;
+    border-radius: 5px;
+}
+
+.shop_anchor a{
+    color: yellowgreen;
+}
+
+.add_anchor a {
+    color: yellowgreen;
+}
+
+button:hover {
+    background-color: rgb(222, 27, 27);
+    box-shadow: 0px 0px 20px rgb(222, 27, 27);
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+}
+
+.list {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}

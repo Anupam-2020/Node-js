@@ -1,0 +1,12 @@
+<%- include('./includes/header.ejs') %>
+<body>
+    <h2>Welcome to users page</h2>
+    <% if(users.length > 0) { %>
+        <% users.map(user => { %>
+            <h3><%= user.title %></h3>
+        <% }) %>
+    <% } else { %>
+        <h2>No Users present!</h2>
+    <% } %>
+</body>
+</html>

@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{docTitle}
+        link(rel="stylesheet", href="/css/styles.css")
+    body 
+        header 
+            nav 
+                li 
+                    a(href="/admin/products-page") Add Item 
+                li 
+                    a.shop_anchor(href="shop_anchor") Shop 
+        main 
+            h1 My Products 
+            p lists of products!
+            if prod.length > 0 
+                each product in prod
+                    h2.data #{product.title} 
+            else 
+                h2.no_data No Products 
