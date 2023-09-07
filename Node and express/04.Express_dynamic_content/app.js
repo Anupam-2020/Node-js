@@ -5,9 +5,9 @@ const adminData = require('./routes/admin');
 const shopPage = require('./routes/shop');
 const path = require('path');
 
-// app.set('views', 'views/pug_template');
-// app.set('view engine', 'pug');
-// app.engine('pug', require('pug').__express)
+// app.set('views', 'views/pug_template'); // this is used to set the path where our pug/ejs/hbs files are there...
+// app.set('view engine', 'pug'); // this is used to set the view engine...
+// app.engine('pug', require('pug').__express) // this is optional step.
 
 app.set('views', 'views/ejs_templates');
 app.set('view engine', 'ejs');
