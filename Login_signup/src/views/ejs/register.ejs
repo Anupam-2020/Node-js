@@ -1,0 +1,29 @@
+<%- include ('./partials/header.ejs')%>
+<body>
+    <h1><%= name %></h1>
+    <form action="/user/register" method="post">
+        <div>
+            <input type="text" name="firstname" placeholder="First Name"/>
+            <input type="text" name="lastname" placeholder="Last Name"/>
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Email"/>
+            <label htmlFor="gender">Male</label>
+            <input type="radio" name="gender" value="m"/>
+            <label htmlFor="gender">Female</label>
+            <input type="radio" name="gender" value="f"/>
+        </div>
+        <div>
+            <input type="text" name="phone" placeholder="Phone no."/>
+            <input type="number" name="age" placeholder="Age"/>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password"/>
+            <input type="password" name="confirmpassword" placeholder="Confirm Password"/>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <span>Already registered ? Back to </span>
+    <a href="/user">Login</a>
+</body>
+</html>

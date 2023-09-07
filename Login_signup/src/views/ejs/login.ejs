@@ -1,0 +1,12 @@
+<%- include ('./partials/header.ejs')%>
+<body>
+    <h1><%= name %></h1>
+    <form action="/user/" method="post">
+        <input type="email" name="email" placeholder="Email"/>
+        <input type="password" name="password" placeholder="Password"/>
+        <button type="submit">Login</button>
+    </form>
+    
+    <p>If not regestered ? Register Here</p><a href="/user/register">Register</a>
+</body>
+</html>
