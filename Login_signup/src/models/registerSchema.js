@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const employeeSchema = new mongoose.Schema({
     firstName: {
@@ -36,6 +37,15 @@ const employeeSchema = new mongoose.Schema({
     }
 })
 
-const Register = new mongoose.model('Register', employeeSchema);
+employeeSchema.pre("save", async function(next) {
+    if(this.isModified("password")) {
+        // console.log(`'password before encrypting', ${this.password}`);
+        this.password = await bcrypt.hash(this.password, 10);
+        // console.log(`'password after encrypting', ${this.password}`);
 
-module.exports = Register;
+        this.confirmPassword = ''
+    }
+    next();
+})
+
+module.exports = mongoose.model('Register', employeeSchema);

@@ -17,7 +17,7 @@ app.use(express.static(path.join(rootDir,'public')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/welcome', (req, resp) => {
+app.get('/welcome/:name', (req, resp) => {
     resp.send('<h1>Welcome to login/register app.</h1>')
 });
 

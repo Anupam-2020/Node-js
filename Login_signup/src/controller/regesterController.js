@@ -4,22 +4,17 @@ exports.getRegistrationPage = (req, resp) => {
   resp.render("register", {
     name: "Employee Registration Form",
     title: "Register Page",
+    passwordCheck: true
   });
 };
 
 exports.postRegisterDetails = async (req, resp, next) => {
-  // const body = req.body;
-  // console.log(body);
-  // fs.writeFile(path.join(rootDir, 'public', 'json', 'user.json'), JSON.stringify(body), (err) => {
-  //     console.log(err);
-  // });
-
+  
   try {
     const password = req.body.password;
     const confirmPassword = req.body.confirmpassword;
 
     if (password === confirmPassword) {
-
       const registerEmployee = new Register({
         firstName: req.body.firstname,
         lastName: req.body.lastname,
@@ -32,14 +27,16 @@ exports.postRegisterDetails = async (req, resp, next) => {
       });
 
       const register = await registerEmployee.save();
-      console.log(register);
+      // console.log(register);
+      resp.redirect("/user/");
     } else {
-        resp.send("<h2>Password doesn't match...</h2>");
-        return resp.end();
+        resp.render('register', {
+          name: "Employee Registration Form",
+          title: "Register Page",
+          passwordCheck: false
+        });
     }
   } catch (err) {
     console.log(err);
   }
-
-  resp.redirect("/user/");
 };
