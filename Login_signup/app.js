@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get('/welcome/:name', async (req, resp) => {
+
+    // extra protection by from direct url access....
+    // if the name passed in url matches the firstName in db, then only welcome is displayed. Else redirected to login page.
     const query = req.params.name;
     const firstName = await Register.findOne({firstName: query});
     console.log(firstName._id)
