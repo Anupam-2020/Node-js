@@ -29,7 +29,7 @@ exports.postLoginDetails = async (req, resp) => {
     if (result) {
       const password = result.password;
       const passwordCheck = await bcrypt.compare(req.body.password, password);
-      console.log(passwordCheck);
+      // console.log(passwordCheck);
       if(passwordCheck) {
         resp.status(201).redirect(`/welcome/${result.firstName}`);
       } else {

@@ -1,11 +1,12 @@
 const express = require('express');
 const rootDir = require('./utils/pathDir');
 require('./src/db/connect');
-const registerData = require('./src/models/registerSchema');
+const Register = require('./src/models/registerSchema');
 const path = require('path');
 const bodyParser = require('body-parser');
 const loginPage = require('./src/routes/login');
 const registerPage = require('./src/routes/register');
+const bcrypt = require('bcryptjs');
 
 
 const app = express();
@@ -17,13 +18,24 @@ app.use(express.static(path.join(rootDir,'public')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/welcome/:name', (req, resp) => {
-    resp.send('<h1>Welcome to login/register app.</h1>')
+app.get('/welcome/:name', async (req, resp) => {
+    const query = req.params.name;
+    const firstName = await Register.findOne({firstName: query});
+    console.log(firstName._id)
+    if(firstName) {
+        resp.send('<h1>Welcome to login/register app.</h1>')
+    } else {
+        resp.redirect('/user/')
+    }
 });
 
 app.use('/user', loginPage.router);
 
 app.use('/user', registerPage.router);
+
+app.use('/', (req, resp, next) => {
+    resp.status(404).send('<h3>Page not found</h3>')
+})
 
 try{
     app.listen(8000, () => {
