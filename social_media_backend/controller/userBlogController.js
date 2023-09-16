@@ -52,7 +52,7 @@ exports.updateABlog = async(req, resp) => {
 
 exports.deleteABlog = async(req, resp) => {
     const id = req.params.id;
-    console.log(id);
+    // console.log(id);
     try {
         const blog = await Blog.findById(id);
         // console.log(blog);
@@ -63,5 +63,17 @@ exports.deleteABlog = async(req, resp) => {
         return resp.status(200).send({message: 'Deleted successfully'});
     } catch(err) {
         return resp.status(500).send({message: 'Error occured'});
+    }
+}
+
+exports.findBlogByUserId = async(req, resp) => {
+    try {
+        const userBlogs = await User.findById(req.params.id).populate('blogs');
+        if(!userBlogs) {
+            return resp.status(500).send({message: "No blog found"});
+        }
+        return resp.status(200).send({blogs: userBlogs});
+    } catch(err) {
+        return resp.status(400).send({error: "Something went wrong"});
     }
 }
